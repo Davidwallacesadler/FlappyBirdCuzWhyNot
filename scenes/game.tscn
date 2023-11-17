@@ -12,8 +12,7 @@ script = ExtResource("1_4opl7")
 death_area = NodePath("DeathArea")
 
 [node name="player" parent="." instance=ExtResource("2_nxnpl")]
-visible = false
-position = Vector2(148, 148)
+position = Vector2(117, 336)
 
 [node name="DeathArea" type="Area2D" parent="."]
 position = Vector2(0, 649)
