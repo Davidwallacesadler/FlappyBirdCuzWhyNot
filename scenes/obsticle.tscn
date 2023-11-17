@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://c0skd3qdcuonk"]
+
+[ext_resource type="Script" path="res://scripts/obsticle.gd" id="1_5c1ao"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bqbbm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nbd63"]
+
+[node name="obsticle" type="Node2D"]
+script = ExtResource("1_5c1ao")
+
+[node name="TopArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TopArea"]
+shape = SubResource("RectangleShape2D_bqbbm")
+
+[node name="BottomArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BottomArea"]
+shape = SubResource("RectangleShape2D_nbd63")

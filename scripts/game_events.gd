@@ -1,3 +1,3 @@
 extends Node
 
-# TODO: Define app-wide signals
+signal player_touched_obsticle
