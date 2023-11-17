@@ -22,14 +22,11 @@ position = Vector2(0, 649)
 position = Vector2(580, 104.5)
 shape = SubResource("RectangleShape2D_5o414")
 
-[node name="obsticle" parent="." instance=ExtResource("3_3syjp")]
-position = Vector2(562, 239)
-
 [node name="obsticle3" parent="." instance=ExtResource("3_3syjp")]
 position = Vector2(503, 239)
 
-[node name="obsticle2" parent="." instance=ExtResource("3_3syjp")]
-position = Vector2(620, 239)
+[node name="obsticle" parent="." instance=ExtResource("3_3syjp")]
+position = Vector2(562, 239)
 
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_left = 228.0
