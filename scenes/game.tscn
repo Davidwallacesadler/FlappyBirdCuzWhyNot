@@ -13,12 +13,16 @@ size = Vector2(232, 645)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7iory"]
 size = Vector2(301, 67)
 
-[node name="game" type="Node2D" node_paths=PackedStringArray("death_area", "obsticle_spawner", "obsticle_reset_area", "score_label")]
+[node name="game" type="Node2D" node_paths=PackedStringArray("player", "death_area", "obsticle_spawner", "obsticle_reset_area", "score_label", "high_score_label", "reset_menu", "reset_button")]
 script = ExtResource("1_4opl7")
+player = NodePath("PlayerContainer/player")
 death_area = NodePath("DeathArea")
 obsticle_spawner = NodePath("ObsticleSpawner")
 obsticle_reset_area = NodePath("ObsticleResetArea")
-score_label = NodePath("CanvasLayer/MarginContainer/Label")
+score_label = NodePath("CanvasLayer/MarginContainer/ScoreLabel")
+high_score_label = NodePath("CanvasLayer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HighScoreLabel")
+reset_menu = NodePath("CanvasLayer/CenterContainer")
+reset_button = NodePath("CanvasLayer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/ResetButton")
 
 [node name="DeathArea" type="Area2D" parent="."]
 position = Vector2(0, 649)
@@ -55,8 +59,10 @@ position = Vector2(149.5, -23.5)
 shape = SubResource("RectangleShape2D_7iory")
 metadata/_edit_lock_ = true
 
-[node name="player" parent="." instance=ExtResource("2_nxnpl")]
-position = Vector2(119, 154)
+[node name="PlayerContainer" type="Node2D" parent="."]
+position = Vector2(158, 136)
+
+[node name="player" parent="PlayerContainer" instance=ExtResource("2_nxnpl")]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -71,10 +77,50 @@ theme_override_constants/margin_top = 16
 theme_override_constants/margin_right = 16
 theme_override_constants/margin_bottom = 16
 
-[node name="Label" type="Label" parent="CanvasLayer/MarginContainer"]
+[node name="ScoreLabel" type="Label" parent="CanvasLayer/MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 1
 theme_override_font_sizes/font_size = 46
 text = "0"
 horizontal_alignment = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/CenterContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/CenterContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/CenterContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="GameOverLabel" type="Label" parent="CanvasLayer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 26
+text = "Game Over"
+horizontal_alignment = 1
+
+[node name="HighScoreLabel" type="Label" parent="CanvasLayer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "High Score"
+horizontal_alignment = 1
+
+[node name="Spacer" type="Control" parent="CanvasLayer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 8)
+layout_mode = 2
+
+[node name="ResetButton" type="Button" parent="CanvasLayer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Reset Game"

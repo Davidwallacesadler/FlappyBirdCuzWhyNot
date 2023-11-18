@@ -1,4 +1,4 @@
-extends Node2D
+class_name Obsticle extends Node2D
 
 static var speed: float = 150
 
