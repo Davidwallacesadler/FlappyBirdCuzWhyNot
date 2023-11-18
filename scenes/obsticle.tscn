@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://c0skd3qdcuonk"]
+[gd_scene load_steps=5 format=3 uid="uid://c0skd3qdcuonk"]
 
 [ext_resource type="Script" path="res://scripts/obsticle.gd" id="1_5c1ao"]
 
@@ -6,19 +6,33 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nbd63"]
 
-[node name="obsticle" type="Node2D" node_paths=PackedStringArray("top_area", "bottom_area", "top_collision_shape", "bottom_collision_shape")]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8d7g0"]
+
+[node name="obsticle" type="Node2D" node_paths=PackedStringArray("top_area", "bottom_area", "score_area", "top_collision_shape", "bottom_collision_shape", "score_collision_shape")]
 script = ExtResource("1_5c1ao")
 top_area = NodePath("TopArea")
 bottom_area = NodePath("BottomArea")
+score_area = NodePath("ScoreArea")
 top_collision_shape = NodePath("TopArea/CollisionShape2D")
 bottom_collision_shape = NodePath("BottomArea/CollisionShape2D")
+score_collision_shape = NodePath("ScoreArea/CollisionShape2D")
 
 [node name="TopArea" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TopArea"]
 shape = SubResource("RectangleShape2D_bqbbm")
 
 [node name="BottomArea" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BottomArea"]
 shape = SubResource("RectangleShape2D_nbd63")
+
+[node name="ScoreArea" type="Area2D" parent="."]
+collision_layer = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ScoreArea"]
+shape = SubResource("RectangleShape2D_8d7g0")

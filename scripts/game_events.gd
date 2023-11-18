@@ -1,3 +1,4 @@
 extends Node
 
 signal player_touched_obsticle
+signal player_passed_obsticle
