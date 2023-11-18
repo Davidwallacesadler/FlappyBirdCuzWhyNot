@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://c0skd3qdcuonk"]
+[gd_scene load_steps=6 format=3 uid="uid://c0skd3qdcuonk"]
 
 [ext_resource type="Script" path="res://scripts/obsticle.gd" id="1_5c1ao"]
+[ext_resource type="Texture2D" uid="uid://bud5ofmpnev2c" path="res://icon.svg" id="2_lpmli"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bqbbm"]
 
@@ -8,7 +9,7 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8d7g0"]
 
-[node name="obsticle" type="Node2D" node_paths=PackedStringArray("top_area", "bottom_area", "score_area", "top_collision_shape", "bottom_collision_shape", "score_collision_shape")]
+[node name="obsticle" type="Node2D" node_paths=PackedStringArray("top_area", "bottom_area", "score_area", "top_collision_shape", "bottom_collision_shape", "score_collision_shape", "top_sprite", "bottom_sprite")]
 script = ExtResource("1_5c1ao")
 top_area = NodePath("TopArea")
 bottom_area = NodePath("BottomArea")
@@ -16,6 +17,8 @@ score_area = NodePath("ScoreArea")
 top_collision_shape = NodePath("TopArea/CollisionShape2D")
 bottom_collision_shape = NodePath("BottomArea/CollisionShape2D")
 score_collision_shape = NodePath("ScoreArea/CollisionShape2D")
+top_sprite = NodePath("TopSpite")
+bottom_sprite = NodePath("BottomSprite")
 
 [node name="TopArea" type="Area2D" parent="."]
 collision_layer = 2
@@ -36,3 +39,9 @@ collision_layer = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ScoreArea"]
 shape = SubResource("RectangleShape2D_8d7g0")
+
+[node name="BottomSprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_lpmli")
+
+[node name="TopSpite" type="Sprite2D" parent="."]
+texture = ExtResource("2_lpmli")

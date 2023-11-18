@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://tgcfahsgbxfk"]
+[gd_scene load_steps=7 format=3 uid="uid://tgcfahsgbxfk"]
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_4opl7"]
 [ext_resource type="PackedScene" uid="uid://bra2x1mpoc8hv" path="res://scenes/player.tscn" id="2_nxnpl"]
@@ -9,6 +9,9 @@ size = Vector2(1160, 213)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0gqmf"]
 size = Vector2(232, 645)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7iory"]
+size = Vector2(315, 67)
 
 [node name="game" type="Node2D" node_paths=PackedStringArray("death_area")]
 script = ExtResource("1_4opl7")
@@ -31,8 +34,16 @@ collision_layer = 2
 collision_mask = 6
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ObsticleResetArea"]
-position = Vector2(116, 322)
+position = Vector2(30, 322)
 shape = SubResource("RectangleShape2D_0gqmf")
 
-[node name="obsticle_spawner" parent="." instance=ExtResource("3_tmy8o")]
-position = Vector2(1153, 0)
+[node name="ObsticleSpawner" parent="." instance=ExtResource("3_tmy8o")]
+position = Vector2(1253, 0)
+
+[node name="PlayerCeiling" type="StaticBody2D" parent="."]
+position = Vector2(1, -12)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerCeiling"]
+position = Vector2(147.5, -23.5)
+shape = SubResource("RectangleShape2D_7iory")
+metadata/_edit_lock_ = true

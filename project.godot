@@ -21,6 +21,7 @@ GameEvents="*res://scripts/game_events.gd"
 
 [display]
 
+window/stretch/mode="viewport"
 window/stretch/aspect="expand"
 
 [rendering]
