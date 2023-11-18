@@ -13,9 +13,10 @@ size = Vector2(232, 645)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7iory"]
 size = Vector2(315, 67)
 
-[node name="game" type="Node2D" node_paths=PackedStringArray("death_area")]
+[node name="game" type="Node2D" node_paths=PackedStringArray("death_area", "score_label")]
 script = ExtResource("1_4opl7")
 death_area = NodePath("DeathArea")
+score_label = NodePath("CanvasLayer/MarginContainer/Label")
 
 [node name="player" parent="." instance=ExtResource("2_nxnpl")]
 position = Vector2(119, 154)
@@ -47,3 +48,24 @@ position = Vector2(1, -12)
 position = Vector2(147.5, -23.5)
 shape = SubResource("RectangleShape2D_7iory")
 metadata/_edit_lock_ = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="Label" type="Label" parent="CanvasLayer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 46
+text = "0"
+horizontal_alignment = 1

@@ -4,3 +4,4 @@
 
 [node name="ObsticleSpawner" type="Node2D"]
 script = ExtResource("1_5l46w")
+speed = 200.0

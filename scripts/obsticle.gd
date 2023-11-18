@@ -1,10 +1,10 @@
 extends Node2D
 
 @export var gap_min_size: float = 200
-@export var gap_max_size: float = 350
+@export var gap_max_size: float = 250
 
 @export var max_height: float = 648
-@export var width: float = 100
+@export var width: float = 125
 @export var speed: float = 100
 
 @export_category("Internal Nodes")
@@ -111,7 +111,9 @@ func _on_body_entered_obsticle(body: Node2D):
 func _on_area_entered_obsticle(area: Area2D):
 	self.position = Vector2.ZERO
 	_setup_new_obsticle_gap.call_deferred()
+	
 
 func _on_body_entered_score(body: Node2D):
 	print("SCORE!")
 	GameEvents.player_passed_obsticle.emit()
+	
