@@ -1,11 +1,12 @@
 extends Node2D
 
+static var speed: float = 150
+
 @export var gap_min_size: float = 200
 @export var gap_max_size: float = 250
 
 @export var max_height: float = 648
 @export var width: float = 125
-@export var speed: float = 100
 
 @export_category("Internal Nodes")
 
@@ -21,6 +22,8 @@ extends Node2D
 @export var bottom_sprite: Sprite2D
 
 func _ready():
+	GameEvents.player_touched_floor.connect(_on_player_touched_floor)
+	
 	top_area.body_entered.connect(_on_body_entered_obsticle)
 	top_area.area_entered.connect(_on_area_entered_obsticle)
 	bottom_area.body_entered.connect(_on_body_entered_obsticle)
@@ -105,8 +108,13 @@ func _create_new_shape() -> RectangleShape2D:
 	return new_shape
 
 func _on_body_entered_obsticle(body: Node2D):
-	print("Game Over")
+	speed = 0
 	GameEvents.player_touched_obsticle.emit()
+	
+
+func _on_player_touched_floor():
+	speed = 0
+	
 
 func _on_area_entered_obsticle(area: Area2D):
 	self.position = Vector2.ZERO
@@ -114,6 +122,6 @@ func _on_area_entered_obsticle(area: Area2D):
 	
 
 func _on_body_entered_score(body: Node2D):
-	print("SCORE!")
 	GameEvents.player_passed_obsticle.emit()
 	
+

@@ -1,6 +1,9 @@
 extends Node2D
 
 @export var death_area: Area2D
+@export var obsticle_spawner: ObsticleSpawner
+@export var obsticle_reset_area: Area2D
+
 @export var score_label: Label
 
 var score = 0
@@ -10,10 +13,11 @@ func _ready():
 	death_area.body_entered.connect(_on_death_area_entered)
 	
 	GameEvents.player_passed_obsticle.connect(_on_player_passed_obsticle)
+	
 
 func _on_death_area_entered(body: Node2D) -> void:
-	print("Game Over")
-	GameEvents.player_touched_obsticle.emit()
+	GameEvents.player_touched_floor.emit()
+	
 
 func _on_player_passed_obsticle() -> void:
 	score += 1

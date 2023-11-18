@@ -1,8 +1,7 @@
-extends Node2D
+class_name ObsticleSpawner extends Node2D
 
-@export var spawn_time: float = 3.5
+@export var spawn_time: float = 2.0
 @export var count: int = 4
-@export var speed: float = 125
 
 var _obsticle_scene = preload("res://scenes/obsticle.tscn")
 
@@ -13,6 +12,7 @@ func _ready():
 	timer.autostart = true
 	timer.wait_time = spawn_time
 	timer.timeout.connect(_on_spawn_timer_finished)
+	
 	add_child(timer)
 	_add_obsticle()
 
@@ -23,7 +23,6 @@ func _on_spawn_timer_finished() -> void:
 
 func _add_obsticle() -> void:
 	var obsticle = _obsticle_scene.instantiate()
-	obsticle.speed = speed
 	add_child(_obsticle_scene.instantiate())
 	count -= 1
 	

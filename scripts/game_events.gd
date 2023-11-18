@@ -1,4 +1,5 @@
 extends Node
 
 signal player_touched_obsticle
+signal player_touched_floor
 signal player_passed_obsticle

@@ -5,49 +5,58 @@
 [ext_resource type="PackedScene" uid="uid://esi6bchgr62a" path="res://scenes/obsticle_spawner.tscn" id="3_tmy8o"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5o414"]
-size = Vector2(1160, 213)
+size = Vector2(301, 12)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0gqmf"]
 size = Vector2(232, 645)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7iory"]
-size = Vector2(315, 67)
+size = Vector2(301, 67)
 
-[node name="game" type="Node2D" node_paths=PackedStringArray("death_area", "score_label")]
+[node name="game" type="Node2D" node_paths=PackedStringArray("death_area", "obsticle_spawner", "obsticle_reset_area", "score_label")]
 script = ExtResource("1_4opl7")
 death_area = NodePath("DeathArea")
+obsticle_spawner = NodePath("ObsticleSpawner")
+obsticle_reset_area = NodePath("ObsticleResetArea")
 score_label = NodePath("CanvasLayer/MarginContainer/Label")
-
-[node name="player" parent="." instance=ExtResource("2_nxnpl")]
-position = Vector2(119, 154)
 
 [node name="DeathArea" type="Area2D" parent="."]
 position = Vector2(0, 649)
 collision_layer = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DeathArea"]
-position = Vector2(580, 104.5)
+position = Vector2(150.5, -10)
 shape = SubResource("RectangleShape2D_5o414")
 
 [node name="ObsticleResetArea" type="Area2D" parent="."]
-position = Vector2(-324, 1)
+position = Vector2(-147, 1)
 collision_layer = 2
 collision_mask = 6
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ObsticleResetArea"]
-position = Vector2(30, 322)
+position = Vector2(-119, 322)
 shape = SubResource("RectangleShape2D_0gqmf")
 
 [node name="ObsticleSpawner" parent="." instance=ExtResource("3_tmy8o")]
-position = Vector2(1253, 0)
+position = Vector2(1301, 0)
 
 [node name="PlayerCeiling" type="StaticBody2D" parent="."]
 position = Vector2(1, -12)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerCeiling"]
-position = Vector2(147.5, -23.5)
+position = Vector2(150, -23)
+shape = SubResource("RectangleShape2D_7iory")
+
+[node name="Floor" type="StaticBody2D" parent="."]
+position = Vector2(1, 706)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
+position = Vector2(149.5, -23.5)
 shape = SubResource("RectangleShape2D_7iory")
 metadata/_edit_lock_ = true
+
+[node name="player" parent="." instance=ExtResource("2_nxnpl")]
+position = Vector2(119, 154)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
