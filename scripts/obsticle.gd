@@ -24,7 +24,7 @@ static var speed: float = 150
 @export var bottom_cap_sprite: Sprite2D
 
 func _ready():
-	GameEvents.player_touched_floor.connect(_on_player_touched_floor)
+	GameEvents.game_over.connect(_on_game_over)
 	
 	top_area.body_entered.connect(_on_body_entered_obsticle)
 	top_area.area_entered.connect(_on_area_entered_obsticle)
@@ -135,10 +135,10 @@ func _create_new_shape() -> RectangleShape2D:
 
 func _on_body_entered_obsticle(body: Node2D):
 	speed = 0
-	GameEvents.player_touched_obsticle.emit()
+	GameEvents.game_over.emit()
 	
 
-func _on_player_touched_floor():
+func _on_game_over():
 	speed = 0
 	
 

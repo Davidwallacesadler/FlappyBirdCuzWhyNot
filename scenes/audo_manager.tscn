@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://bd1ffukf0xvfo"]
+
+[ext_resource type="Script" path="res://scripts/audo_manager.gd" id="1_ddrow"]
+
+[node name="AudioManager" type="Node2D" node_paths=PackedStringArray("sound_effect_audio_player")]
+script = ExtResource("1_ddrow")
+sound_effect_audio_player = NodePath("SoundEffectAudioStreamPlayer")
+
+[node name="SoundEffectAudioStreamPlayer" type="AudioStreamPlayer" parent="."]

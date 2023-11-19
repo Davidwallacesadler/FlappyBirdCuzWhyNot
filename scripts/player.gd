@@ -1,18 +1,18 @@
 class_name Player extends CharacterBody2D
 
-const DEFAULT_JUMP_VELOCITY = -400.0
-const ROTATION_VELOCITY = 50
+const JUMP_VELOCITY = -400.0
+const ROTATION_VELOCITY = 40
 
 var _gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
-var _jump_velocity = DEFAULT_JUMP_VELOCITY
+
+var _is_alive := true
 
 func _ready():
-	GameEvents.player_touched_obsticle.connect(_on_touched_obsticle)
-	GameEvents.player_touched_floor.connect(_on_touched_obsticle)
+	GameEvents.game_over.connect(_on_game_over)
 	
 
 func _process(delta):
-	if self.rotation_degrees < 90:
+	if self.rotation_degrees < 90 and _is_alive:
 		self.rotation_degrees += ROTATION_VELOCITY * delta
 		
 	
@@ -20,8 +20,8 @@ func _process(delta):
 func _physics_process(delta):
 	self.velocity.y += _gravity * delta
 		
-	if Input.is_action_just_pressed("ui_accept"):
-		self.velocity.y = _jump_velocity
+	if Input.is_action_just_pressed("click") and _is_alive:
+		self.velocity.y = JUMP_VELOCITY
 		self.rotation_degrees = lerp(90, 0, 0.75)
 		
 	
@@ -29,7 +29,10 @@ func _physics_process(delta):
 	
 
 func reset() -> void:
-	_jump_velocity = DEFAULT_JUMP_VELOCITY
+	_is_alive = true
+	self.rotation_degrees = 0
+	
 
-func _on_touched_obsticle() -> void:
-	_jump_velocity = 0
+func _on_game_over() -> void:
+	_is_alive = false
+	

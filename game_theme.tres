@@ -1,0 +1,7 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://smr1x43qehmn"]
+
+[ext_resource type="FontFile" uid="uid://b666po1s1ds1b" path="res://assets/misty_style.ttf" id="1_q706l"]
+
+[resource]
+Button/fonts/font = ExtResource("1_q706l")
+Label/fonts/font = ExtResource("1_q706l")

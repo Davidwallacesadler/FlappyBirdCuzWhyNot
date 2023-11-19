@@ -10,7 +10,6 @@ extends Node2D
 @export var reset_menu: Control
 @export var reset_button: Button
 
-
 var _obsticle_spawner_scene = preload("res://scenes/obsticle_spawner.tscn")
 
 var score = 0
@@ -18,8 +17,7 @@ var high_score = 0
 
 func _ready():
 	GameEvents.player_passed_obsticle.connect(_on_player_passed_obsticle)
-	GameEvents.player_touched_floor.connect(_on_game_over)
-	GameEvents.player_touched_obsticle.connect(_on_game_over)
+	GameEvents.game_over.connect(_on_game_over)
 	
 	score_label.text = _int_to_string(score)
 	death_area.body_entered.connect(_on_death_area_entered)
@@ -27,7 +25,7 @@ func _ready():
 	
 
 func _on_death_area_entered(body: Node2D) -> void:
-	GameEvents.player_touched_floor.emit()
+	GameEvents.game_over.emit()
 	
 
 func _on_player_passed_obsticle() -> void:
