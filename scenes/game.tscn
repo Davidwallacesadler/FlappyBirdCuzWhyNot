@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://tgcfahsgbxfk"]
+[gd_scene load_steps=8 format=3 uid="uid://tgcfahsgbxfk"]
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_4opl7"]
+[ext_resource type="Texture2D" uid="uid://ck03yd2o5fm68" path="res://assets/background.svg" id="2_g5chh"]
 [ext_resource type="PackedScene" uid="uid://bra2x1mpoc8hv" path="res://scenes/player.tscn" id="2_nxnpl"]
 [ext_resource type="PackedScene" uid="uid://esi6bchgr62a" path="res://scenes/obsticle_spawner.tscn" id="3_tmy8o"]
 
@@ -23,6 +24,11 @@ score_label = NodePath("CanvasLayer/MarginContainer/ScoreLabel")
 high_score_label = NodePath("CanvasLayer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HighScoreLabel")
 reset_menu = NodePath("CanvasLayer/CenterContainer")
 reset_button = NodePath("CanvasLayer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/ResetButton")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(590.5, 324)
+scale = Vector2(1.26172, 1.26172)
+texture = ExtResource("2_g5chh")
 
 [node name="DeathArea" type="Area2D" parent="."]
 position = Vector2(0, 649)

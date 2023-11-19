@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="c" data-name="player" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <circle cx="32.63" cy="32.21" r="24.61" style="fill: #fbb03b; stroke-width: 0px;"/>
+  <path d="m46.76,50.72c-8.03,8.03-22.12,6.97-31.46-2.37-9.34-9.34-10.41-23.43-2.37-31.46,0,0-1.1,36.02,31.51,33.72l2.33.12Z" style="fill: #e29229; stroke-width: 0px;"/>
+  <circle cx="32.71" cy="31.79" r="24.61" style="fill: none; stroke: #473211; stroke-miterlimit: 10; stroke-width: 3px;"/>
+  <ellipse cx="48.78" cy="27.74" rx="2.74" ry="6.03" style="fill: #473211; stroke-width: 0px;"/>
+  <ellipse cx="45.31" cy="39.82" rx="4.06" ry="3.4" transform="translate(-14.46 47.92) rotate(-49.02)" style="fill: #e38c86; stroke-width: 0px;"/>
+  <ellipse cx="28.69" cy="29.12" rx="7.92" ry="8.16" transform="translate(-12.13 26.92) rotate(-42.34)" style="fill: #fbb03b; stroke-width: 0px;"/>
+  <path d="m34.9,34.02c-3.06,3.06-6.22,4.93-9.88,1.28s-4.14-9.1-1.09-12.16c0,0-2.51,11.54,10.07,10.83l.9.06Z" style="fill: #e29229; stroke-width: 0px;"/>
+  <path d="m26.45,36.25c-.77-.17-2.48-1.25-3.74-2.63-3.03-3.33-2.87-8.42.36-11.37,3.23-2.95,8.32-2.64,11.35.69" style="fill: none; stroke: #473211; stroke-linecap: round; stroke-miterlimit: 10; stroke-width: 3px;"/>
+  <path d="m51.93,36.32s3.1,1.24,3.94.62" style="fill: none; stroke: #473211; stroke-linecap: round; stroke-miterlimit: 10; stroke-width: 2px;"/>
+</svg>

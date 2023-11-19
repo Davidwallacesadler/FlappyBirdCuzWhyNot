@@ -19,7 +19,9 @@ static var speed: float = 150
 @export var score_collision_shape: CollisionShape2D
 
 @export var top_sprite: Sprite2D
+@export var top_cap_sprite: Sprite2D
 @export var bottom_sprite: Sprite2D
+@export var bottom_cap_sprite: Sprite2D
 
 func _ready():
 	GameEvents.player_touched_floor.connect(_on_player_touched_floor)
@@ -34,6 +36,7 @@ func _ready():
 	score_collision_shape.shape = _create_new_shape()
 	
 	_setup_new_obsticle_gap()
+	
 
 func _process(delta):
 	self.position.x -= speed * delta
@@ -65,13 +68,14 @@ func _get_gap_start_position(gap_size: float) -> float:
 	
 
 func _setup_top_obsticle(height: float) -> void:
-	top_collision_shape.shape.size.y = height
-	
+	# Setup collision shape:
 	var y_offset_position = height * 0.5
+	top_collision_shape.shape.size.y = height
 	top_area.position = Vector2(0, y_offset_position)
 	
+	# Setup shaft sprite:
 	var image_rect = top_sprite.get_rect()
-	var x_scale_factor = width / image_rect.size.x 
+	var x_scale_factor = (width - 8) / image_rect.size.x 
 	var y_scale_factor = height / image_rect.size.y
 	
 	top_sprite.scale.x = x_scale_factor
@@ -79,14 +83,27 @@ func _setup_top_obsticle(height: float) -> void:
 	
 	var sprite_offset = image_rect.size.y * y_scale_factor * 0.5
 	top_sprite.position = Vector2(0, sprite_offset)
+	
+	# Setup cap sprite:
+	var cap_image_rect = top_cap_sprite.get_rect()
+	var cap_x_scale_factor = width / cap_image_rect.size.x 
+	
+	top_cap_sprite.scale.x = cap_x_scale_factor
+	top_cap_sprite.scale.y = 2
+	
+	var cap_sprite_offset = cap_image_rect.size.y
+	top_cap_sprite.position = Vector2(0, height - cap_sprite_offset)
+	
 
 func _setup_bottom_obsticle(height: float) -> void:
-	bottom_collision_shape.shape.size.y = height
+	# Setup collision shape:
 	var y_offset_position = max_height - (height * 0.5)
+	bottom_collision_shape.shape.size.y = height
 	bottom_area.position = Vector2(0, y_offset_position)
 	
+	# Setup shaft sprite:
 	var image_rect = bottom_sprite.get_rect()
-	var x_scale_factor = width / image_rect.size.x 
+	var x_scale_factor = (width - 8) / image_rect.size.x 
 	var y_scale_factor = height / image_rect.size.y
 	
 	bottom_sprite.scale.x = x_scale_factor
@@ -95,6 +112,15 @@ func _setup_bottom_obsticle(height: float) -> void:
 	var sprite_offset = image_rect.size.y * y_scale_factor * 0.5
 	bottom_sprite.position = Vector2(0, max_height - sprite_offset)
 	
+	# Setup cap sprite:
+	var cap_image_rect = bottom_cap_sprite.get_rect()
+	var cap_x_scale_factor = width / cap_image_rect.size.x 
+	
+	bottom_cap_sprite.scale.x = cap_x_scale_factor
+	bottom_cap_sprite.scale.y = 2
+	
+	var cap_sprite_offset = cap_image_rect.size.y
+	bottom_cap_sprite.position = Vector2(0, max_height - height + cap_sprite_offset)
 
 func _setup_score_area(height: float, y_offset: float) -> void:
 	score_collision_shape.shape.size.y = height

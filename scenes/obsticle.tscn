@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://c0skd3qdcuonk"]
+[gd_scene load_steps=7 format=3 uid="uid://c0skd3qdcuonk"]
 
 [ext_resource type="Script" path="res://scripts/obsticle.gd" id="1_5c1ao"]
-[ext_resource type="Texture2D" uid="uid://bud5ofmpnev2c" path="res://icon.svg" id="2_lpmli"]
+[ext_resource type="Texture2D" uid="uid://b8rr86mb0w8jp" path="res://assets/pipe_shaft.svg" id="2_xdas7"]
+[ext_resource type="Texture2D" uid="uid://b752s05mnc7b7" path="res://assets/pipe_cap.svg" id="3_otigf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bqbbm"]
 
@@ -9,7 +10,7 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8d7g0"]
 
-[node name="obsticle" type="Node2D" node_paths=PackedStringArray("top_area", "bottom_area", "score_area", "top_collision_shape", "bottom_collision_shape", "score_collision_shape", "top_sprite", "bottom_sprite")]
+[node name="obsticle" type="Node2D" node_paths=PackedStringArray("top_area", "bottom_area", "score_area", "top_collision_shape", "bottom_collision_shape", "score_collision_shape", "top_sprite", "top_cap_sprite", "bottom_sprite", "bottom_cap_sprite")]
 script = ExtResource("1_5c1ao")
 top_area = NodePath("TopArea")
 bottom_area = NodePath("BottomArea")
@@ -18,7 +19,9 @@ top_collision_shape = NodePath("TopArea/CollisionShape2D")
 bottom_collision_shape = NodePath("BottomArea/CollisionShape2D")
 score_collision_shape = NodePath("ScoreArea/CollisionShape2D")
 top_sprite = NodePath("TopSpite")
+top_cap_sprite = NodePath("TopCapSprite")
 bottom_sprite = NodePath("BottomSprite")
+bottom_cap_sprite = NodePath("BottomCapSprite")
 
 [node name="TopArea" type="Area2D" parent="."]
 collision_layer = 2
@@ -41,7 +44,14 @@ collision_layer = 4
 shape = SubResource("RectangleShape2D_8d7g0")
 
 [node name="BottomSprite" type="Sprite2D" parent="."]
-texture = ExtResource("2_lpmli")
+texture = ExtResource("2_xdas7")
 
 [node name="TopSpite" type="Sprite2D" parent="."]
-texture = ExtResource("2_lpmli")
+texture = ExtResource("2_xdas7")
+
+[node name="BottomCapSprite" type="Sprite2D" parent="."]
+texture = ExtResource("3_otigf")
+
+[node name="TopCapSprite" type="Sprite2D" parent="."]
+texture = ExtResource("3_otigf")
+flip_v = true
