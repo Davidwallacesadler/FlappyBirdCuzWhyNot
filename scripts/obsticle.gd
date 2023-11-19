@@ -121,6 +121,7 @@ func _setup_bottom_obsticle(height: float) -> void:
 	
 	var cap_sprite_offset = cap_image_rect.size.y
 	bottom_cap_sprite.position = Vector2(0, max_height - height + cap_sprite_offset)
+	
 
 func _setup_score_area(height: float, y_offset: float) -> void:
 	score_collision_shape.shape.size.y = height
@@ -132,6 +133,7 @@ func _create_new_shape() -> RectangleShape2D:
 	var new_shape = RectangleShape2D.new()
 	new_shape.size.x = width
 	return new_shape
+	
 
 func _on_body_entered_obsticle(body: Node2D):
 	speed = 0

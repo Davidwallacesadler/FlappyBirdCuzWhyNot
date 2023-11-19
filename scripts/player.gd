@@ -14,7 +14,6 @@ func _ready():
 func _process(delta):
 	if self.rotation_degrees < 90 and _is_alive:
 		self.rotation_degrees += ROTATION_VELOCITY * delta
-		
 	
 
 func _physics_process(delta):
@@ -23,7 +22,6 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("click") and _is_alive:
 		self.velocity.y = JUMP_VELOCITY
 		self.rotation_degrees = lerp(90, 0, 0.75)
-		
 	
 	self.move_and_slide()
 	
@@ -31,6 +29,7 @@ func _physics_process(delta):
 func reset() -> void:
 	_is_alive = true
 	self.rotation_degrees = 0
+	self.position = Vector2.ZERO
 	
 
 func _on_game_over() -> void:

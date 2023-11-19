@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://bra2x1mpoc8hv" path="res://scenes/player.tscn" id="2_nxnpl"]
 [ext_resource type="PackedScene" uid="uid://esi6bchgr62a" path="res://scenes/obsticle_spawner.tscn" id="3_tmy8o"]
 [ext_resource type="PackedScene" uid="uid://bd1ffukf0xvfo" path="res://scenes/audo_manager.tscn" id="5_b3w22"]
-[ext_resource type="Theme" uid="uid://smr1x43qehmn" path="res://game_theme.tres" id="5_t760s"]
+[ext_resource type="Theme" uid="uid://smr1x43qehmn" path="res://assets/game_theme.tres" id="6_xelbm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5o414"]
 size = Vector2(301, 12)
@@ -16,7 +16,7 @@ size = Vector2(232, 645)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7iory"]
 size = Vector2(301, 67)
 
-[node name="game" type="Node2D" node_paths=PackedStringArray("player", "death_area", "obsticle_spawner", "obsticle_reset_area", "score_label", "high_score_label", "reset_menu", "reset_button")]
+[node name="Game" type="Node2D" node_paths=PackedStringArray("player", "death_area", "obsticle_spawner", "obsticle_reset_area", "score_label", "high_score_label", "reset_menu", "reset_button")]
 script = ExtResource("1_4opl7")
 player = NodePath("PlayerContainer/player")
 death_area = NodePath("DeathArea")
@@ -29,7 +29,7 @@ reset_button = NodePath("CanvasLayer/ResetMenu/PanelContainer/MarginContainer/VB
 
 [node name="AudioManager" parent="." instance=ExtResource("5_b3w22")]
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Background" type="Sprite2D" parent="."]
 position = Vector2(590.5, 324)
 scale = Vector2(1.26172, 1.26172)
 texture = ExtResource("2_g5chh")
@@ -82,7 +82,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("5_t760s")
+theme = ExtResource("6_xelbm")
 theme_override_constants/margin_left = 16
 theme_override_constants/margin_top = 16
 theme_override_constants/margin_right = 16
@@ -104,7 +104,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("5_t760s")
+theme = ExtResource("6_xelbm")
 
 [node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/ResetMenu"]
 layout_mode = 2

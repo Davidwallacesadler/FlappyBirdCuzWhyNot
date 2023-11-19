@@ -10,7 +10,7 @@ extends Node2D
 @export var reset_menu: Control
 @export var reset_button: Button
 
-var _obsticle_spawner_scene = preload("res://scenes/obsticle_spawner.tscn")
+const _obsticle_spawner_scene = preload("res://scenes/obsticle_spawner.tscn")
 
 var score = 0
 var high_score = 0
@@ -47,13 +47,13 @@ func _on_game_over() -> void:
 
 # TODO: Clean this up... this is so ugly
 func _on_reset_pressed() -> void:
-	player.position = Vector2.ZERO
 	player.reset()
 	
+	var current_spawner_pos = obsticle_spawner.position
 	remove_child(obsticle_spawner)
 	obsticle_spawner.queue_free()
 	obsticle_spawner = _obsticle_spawner_scene.instantiate()
-	obsticle_spawner.position = Vector2(get_window().size.x + 100, 0)
+	obsticle_spawner.position = current_spawner_pos
 	add_child(obsticle_spawner)
 	
 	Obsticle.speed = 150

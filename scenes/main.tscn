@@ -1,15 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://d0ajqy4g6j1nb"]
+[gd_scene load_steps=3 format=3 uid="uid://d0ajqy4g6j1nb"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_r4rfv"]
 [ext_resource type="PackedScene" uid="uid://cihhla5wyyumb" path="res://scenes/menu.tscn" id="2_lguqu"]
-[ext_resource type="PackedScene" uid="uid://tgcfahsgbxfk" path="res://scenes/game.tscn" id="3_b4ylc"]
-[ext_resource type="Theme" uid="uid://smr1x43qehmn" path="res://game_theme.tres" id="3_vb8ou"]
 
-[node name="Node2D" type="Node2D"]
+[node name="Main" type="Node2D"]
 script = ExtResource("1_r4rfv")
 
-[node name="menu" parent="." instance=ExtResource("2_lguqu")]
-theme = ExtResource("3_vb8ou")
+[node name="MenuCanvas" type="CanvasLayer" parent="."]
 
-[node name="game" parent="." instance=ExtResource("3_b4ylc")]
-position = Vector2(7, -5)
+[node name="MainMenu" parent="MenuCanvas" instance=ExtResource("2_lguqu")]
